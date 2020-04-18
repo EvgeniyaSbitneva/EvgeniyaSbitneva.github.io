@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Школа Английского языка .YES</title>
+	<link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+	<section class="modal modal--nojs">
+		<div class="modal__wrap">
+			<h2 class="modal__heading heading">Пробное занятие</h2>
+			<p class="modal__description ">Оставьте свой номер телефона и наш оператор свяжется с вами для согласования даты занятия</p>
+			<form class="modal__form contact-form" action="vendor/mailer/smart.php" method="post">
+				<label class="contact-form__item">
+					<span class="visually-hidden">Введите номер телефона</span>
+					<input class="contact-form__input" type="tel" name="tel" required="">
+				</label>
+				<button class="btn contact-form__btn" type="submit">Записаться на пробное занятие</button>
+			</form>
+			<a class="modal__toggle modal__close" href="index.html">
+				<span class="visually-hidden">Закрыть окно</span>
+			</a>
+		</div>
+	</section>
+
+	<script src="js/tel-mask.js"></script>
+</body>
+</html>
