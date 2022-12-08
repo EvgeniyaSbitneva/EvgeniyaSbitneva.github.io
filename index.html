@@ -1,357 +1,337 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Школа Английского языка .YES</title>
-	<link rel="preload" href="fonts/Gilroy-ExtraBold.woff2" as="font">
-	<link rel="preload" href="fonts/Gilroy-Light.woff2" as="font">
-	<link rel="preload" href="js/script.js" as="script">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="language" content="en"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>ИПБ России</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
 
-	<link rel="stylesheet" href="vendor/swipe_slider/css/swiper.min.css">
-	<link rel="stylesheet" href="css/style.min.css">
+        .row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .left {
+            display: inline-block;
+        }
+
+        .right {
+            width: calc(100% - 870px);
+            display: inline-block;
+            vertical-align: top;
+            height: 480px;
+            overflow: overlay;
+        }
+
+        .left iframe,
+        .proofix-registration {
+            width: 854px;
+            height: 480px;
+        }
+
+        .bottom {
+          width: 100%;
+        }
+
+        @media (min-width: 1040px) and (max-width: 1200px) {
+            .right {
+                width: calc(100% - 710px) !important;
+                vertical-align: top;
+                height: 480px;
+                overflow: overlay;
+            }
+
+            .left iframe,
+            .proofix-registration {
+                width: 700px !important;
+            }
+        }
+
+        @media (min-width: 0px) and (max-width: 1039px) {
+            .right {
+                width: 100%;
+                height: 320px;
+                vertical-align: top;
+                height: 480px;
+                overflow: overlay;
+            }
+
+            .left {
+                width: 100%
+            }
+
+            .left iframe {
+                width: 100%;
+                height: 280px !important
+            }
+        }
+
+        .hc__footer {
+            display: none;
+        }
+    </style>
+    <style>
+      #player {
+          display: none;
+      }
+  
+      .proofix-registration, .proofix-registration2 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          /* width: 100%;
+          height: 100%; */
+          margin: 0;
+          padding: 50px 20px;
+          font-family: 'PT Sans', sans-serif;
+          font-size: 24px;
+          line-height: 1.4;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.8) center no-repeat;
+          background-size: cover;
+      }
+  
+      .proofix-registration__wrap {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 770px;
+          max-width: 100%;
+      }
+  
+      .proofix-registration__title {
+          margin-bottom: 30px;
+          font-weight: 700;
+          font-size: 34px;
+          text-transform: uppercase;
+          text-align: center;
+      }
+  
+      .proofix-registration__field {
+          position: relative;
+          width: 485px;
+          max-width: 100%;
+          padding-bottom: 15px;
+          margin-bottom: 15px;
+      }
+  
+      .proofix-button {
+          background: none;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          width: 485px;
+          max-width: 100%;
+          height: 60px;
+          padding-left: 15px;
+          padding-right: 15px;
+          background: #eb8922;
+          border-radius: 5px;
+          font-size: 24px;
+          color: #fff;
+          outline: none;
+          transition: 0.3s;
+      }
+  
+      .proofix-registration__input {
+          box-sizing: border-box;
+          display: block;
+          width: 100%;
+          height: 60px;
+          padding-left: 15px;
+          padding-right: 15px;
+          background: #fff;
+          border: 1px solid #74777B;
+          border-radius: 5px;
+          font-size: 24px;
+          outline: none;
+      }
+      .proofix-registration__error-text {
+        margin-top: 10px;
+        font-size: 22px;
+      }
+      
+      @media (max-width: 1039px) {
+        .proofix-registration  {
+          width: 100%;
+        }
+
+        .proofix-registration__title {
+          font-size: 28px;
+        }
+
+        .proofix-registration__error-text {
+          font-size: 16px;
+        }
+      }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://static.proofix.live/widgets/chat/proofix-chat.js?v1.00.18"></script>
+<!--    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossOrigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>-->
 </head>
-<body>
-	<header class="page-header" id="page-header">
-		<div class="page-header__wrap">
-			<a class="page-header__logo logo">
-				<img src="img/Logo-YES.svg" width="64" alt="Школа Английского языка .YES">
-			</a>
-			<p class="page-header__address">г. Москва ул. Северная, 35</p>
-			<div class="page-header__call-to-action call-to-action">
-				<a class="call-to-action__tel page-header__tel" href="tel:+7945465467">+7 (945) 46-54-67</a>
-				<div class="call-to-action__link-wrap">
-					<a href="call-back.html" class="call-to-action__call-back page-header__call-back open-modal">Заказать звонок</a>
-				</div>
-			</div>
-		</div>
-	</header>
+<body style="text-align: center;">
+<div class="row">
+    <div class="left" id="passwd">
+        <form class="proofix-registration">
+            <div class="proofix-registration__wrap">
+                <div class="proofix-registration__title">Введите пароль<br> для доступа к мероприятию</div>
+                <div class="proofix-registration__field">
+                    <input type="text" name="pass" id="pass" placeholder="Пароль" class="proofix-registration__input">
+                </div>
+                <button type="button" class="proofix-button proofix-registration__button" onclick="sendPass()">
+                    Войти
+                </button>
+                <div class="proofix-registration__error-text" id="error"></div>
+            </div>
+        </form>
+    </div>
+    <div class="left" id="player">
+        <iframe frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="right">
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+          var prfxChat = new ProofixChat({
+            selector: `#hypercomments_widget`,
+            widgetId: 'ipb02122022',
+            channelId: 'room2',
+            hideAuthEmail: true,
+            mainColor: '#eb8922'
+          });
+          prfxChat.init();
+        </script>
+    </div>
+    <div class="bottom">
+      <a href="40">Копосова Е. И.</a>
+      <a href="612">Рабинович А. М.</a>
+      <a href="4816">Шалыгина Н. В..</a>
+      <a href="6945">Полежарова Л. В.</a>
+      <a href="8960">Воробьева Е. В.</a>
+      <a href="40">Копосова Е. И.</a>
+      <a href="40">Копосова Е. И.</a>
+      <a href="40">Копосова Е. И.</a>
+      <a href="40">Копосова Е. И.</a>
+      <!-- 1.	Копосова Е. И. (0:00:40)
+2.	Рабинович А. М. (0:10:12)
+3.	Шалыгина Н. В. (1:20:16)
+4.	Полежарова Л. В. (1:55:45)
+5.	Воробьева Е. В. (2:29:20)
+6.	Медведев А. Н. (3:16:21)
+7.	Карпенко Н. Н. (4:05:30)
+8.	Ряховский Д.И. (4:50:09)
+9.	Бурдина А. А. (5:42:07)
+10.	Чамкина Н. С. (6:05:00)
+11.	Смирнова Т. С. (6:56:38)
+12.	Хабарова Л. П. (7:57:48)
+13.	Пятов М. Л. (13:27:00) -->
 
-	<main class="page-main">
-		<section class="banner banner--top">
-			<div class="banner__wrap">
-				<div class="banner__img-wrap">
-					<img class="banner__img" src="img/bus.png" width="243" alt="Лондонский автобус">
-				</div>
-				<div class="banner__text-wrap">
-					<h1 class="banner__heading heading">
-						<small>Ускоренный</small> 
-						2-месячный курс<br>английского языка
-					</h1>
-					<p class="banner__offer">Освойте английский для путешествий<br>и научитесь объясняться в любой ситуации</p>
-					<a class="banner__btn btn open-modal" href="call-back.html">Записаться на пробное занятие</a>
-				</div>
-			</div>
-		</section>
+    </div>
+</div>
+</div>
+<script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossOrigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script>
+    var socket = io("live.proofix.tv", {
+        transports: ["websocket"],
+        path: "/chat",
+        query: {
+            "eventName": "ipb02122022"
+        }
+    });
 
-		<section class="motivation">
-			<div class="motivation__wrap">
-				<b class="motivation__lead heading">Бывали ли вы<br> в подобных ситауциях</b>
-				<div class="motivation__item">
-					<span class="motivation__number">01<span>.</span></span>
-					<p class="motivation__text">Вы думали, что знаете английский, но в гостинице с трудом выговариваете, какой номер вам нужен</p>
-					<div class="motivation__img motivation__img--hotel">
-						<img src="img/hotel.jpg" width="407" alt="Гостиница">
-					</div>
-				</div>
-				<div class="motivation__item">
-					<span class="motivation__number">02<span>.</span></span>
-					<p class="motivation__text">Вы смогли спросить, до какой станции метро нужно дойти, но не поняли, куда вас отправили</p>
-					<div class="motivation__img motivation__img--compas">
-						<img src="img/compas.jpg" width="344" alt="Направление">
-					</div>
-				</div>
-				<div class="motivation__item">
-					<span class="motivation__number">03<span>.</span></span>
-					<p class="motivation__text">В аэропорту при любом подозрении на задрежку, вы ищете представителя, хоть как-то говоряшего по-русски</p>
-					<div class="motivation__img motivation__img--airport">
-						<img src="img/airport.jpg" width="343" alt="Аэропорт">
-					</div>
-				</div>
-				<div class="motivation__item">
-					<span class="motivation__number motivation__number--final heading">в итоге...</span>
-					<p class="motivation__text">Все это портит впечатление от отдыха и отбивает желание посещать новые страны</p>
-					<div class="motivation__img motivation__img--socks">
-						<img src="img/socks.jpg" width="346" alt="Разочарование">
-					</div>
-				</div>
-			</div>
-		</section>
+    // socket.on("connect", () => {
+    //     socket.emit("uid", Cookies.get("ipb25112021-id"))
+    // });
+</script>
+<script>
+    $(document).ready(function () {
+        if (Cookies.get("ipb02122022-id")) {
+            requestPass({
+                pass: Cookies.get("ipb02122022-id")
+            })
+        }
 
-		<section class="features">
-			<b class="features__lead heading">Мы предусмотрели <br>эти ситуации</b>
-			<ul class="features__list">
-				<li class="features__item">
-					<h3 class="features__heading">Значение</h3>
-					<p class="features__text">Разбираем те ситуации, <br>с которыми сталкивается путешественник</p>
-				</li>
-				<li class="features__item">
-					<h3 class="features__heading">Понимание</h3>
-					<p class="features__text">Учим объясняться сами и понимать, что говорят другие</p>
-				</li>
-				<li class="features__item">
-					<h3 class="features__heading">Практика</h3>
-					<p class="features__text">Проводим диалоги <br>с преподавателями и носителями языка</p>
-				</li>
-			</ul>
-			<img class="features__img" src="img/photographier.png" width="908" alt="Экскурсия">
-		</section>
+        $('.bottom a').on('click', function (e) {
+          e.preventDefault();
+          var timecode = +$(this).attr('href') + 985;
+          $('#player iframe')[0].contentWindow.player.play();
+          $('#player iframe')[0].contentWindow.player.seek(timecode);
+        })
+    });
 
-		<section class="teachers">
-			<h2 class="teachers__heading heading">Кто ведет курс</h2>
-			<ul class="teachers__list">
-				<li class="teachers__item">
-					<h3 class="teachers__name">Алла Ристовская</h3>
-					<p class="teachers__text">Занимается преподаванием английского языка с 2007 года. За 7 лет практики Алла занималась более чем с 80 студентами. Очень любит путешествовать: неоднократно бывала зарубежом, проходила практику в США (Нью-Йорк) и Великобритании (Лондон).</p>
-					<div class="teachers__img-wrap">
-						<img class="teachers__photo" src="img/ristovskaia.jpg" alt="Алла Ристовская">
-					</div>
-				</li>
-				<li class="teachers__item">
-					<h3 class="teachers__name">Анастасия Левчук</h3>
-					<p class="teachers__text">Закончила Алтайскую Государственную педагогическую Академию по специальности "теория и методика преподавания иностранных языков и культур". Также имеется дополнительная квалификация "переводчик в сфере профессиональной коммуникации".</p>
-					<div class="teachers__img-wrap">
-						<img class="teachers__photo" src="img/levchuk.jpg" alt="Анастасия Левчук">
-					</div>
-				</li>
-				<li class="teachers__item">
-					<h3 class="teachers__name">Евгений Пак</h3>
-					<p class="teachers__text">Сетифицированный спеуиалист (диплом ОмГПУ, TTC в Кембридже, TESOL в Лондоне). Имеет богатый опыт работы на английском языке: от обучения в языковых школах до выполнения функции переводчика на различных конференциях.<br>Более года Евгений жил в г. Сиэтл (США).</p>
-					<div class="teachers__img-wrap">
-						<img class="teachers__photo" src="img/pak.jpg" alt="Евгений Пак">
-					</div>
-				</li>
-			</ul>
-		</section>
+    function sendPass() {
+        if (!$('#pass').val()) {
+            $('#error').html('Ошибка! Введите пароль!');
+        } else {
+            let data = {
+                pass: $('#pass').val().trim()
+            };
+            requestPass(data);
+        }
+    }
 
-		<section class="program">
-			<div class="program__wrap">
-				<header class="program__header">
-					<h2 class="program__heading heading">Что входит <br>в стоимость</h2>
-					<strong class="program__price">21 000 рублей</strong>
-					<p class="program__summary">Вы пройдете 2-месячную программу по 2 занятия в неделю, в конце каждой из которых сможете самостоятельно построить диалог</p>
-				</header>
-				<ul class="program__list">
-					<li class="program__item">
-						<h3 class="program__item-heading">1 неделя - аэропорт</h3>
-						<p class="program__text">Вылет-прилет, регистрация, специальный и пограничный, потеря багажа, задержка рейса</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">2 неделя - дорога, трансфер</h3>
-						<p class="program__text">Поиск транспорта, пункты назначения, общение с водителем (уточнения, просьбы, остановки)</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">3 неделя - гостиница, ночлег</h3>
-						<p class="program__text">Поиск ночлега, бронирование, уточнение условий проживания, решение проблем с персоналом</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">4 неделя - культурный отдых</h3>
-						<p class="program__text">Покупка билетов, туров, уточнение обстоятельств, потеря напарника, сопровождающего.</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">5 неделя - местность, поиск</h3>
-						<p class="program__text">Выяснение дороги, направления, местонахождения (собственного и необходимых мест)</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">6 неделя - магазины</h3>
-						<p class="program__text">Выбор, общение с продавцами, выяснение цены, торг, покупка, возврат, случаи мошеничества</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">7 неделя - общение с местными</h3>
-						<p class="program__text">Непринужденные беседы, вопросы, просьбы о помощи, совместный обед, времяпрепровождения</p>
-					</li>
-					<li class="program__item">
-						<h3 class="program__item-heading">8 неделя - неожиданные ситуации</h3>
-						<p class="program__text">Разбор непредвиденных случаев (потеря документов, обращение в полицию, скорую)</p>
-					</li>
-				</ul>
-			</div>
-			<div class="program__img">
-				<img src="img/bigben.png" width="269" alt="Биг Бэн">
-			</div>
-		</section>
+    var passPingInterval = null;
 
-		<section class="algorithm">
-			<div class="algorithm__wrap">
-				<h2 class="algorithm__heading heading">Как все будет проходить</h2>
-				<ul class="algorithm__list">
-					<li class="algorithm__item">
-						<div class="algorithm__text-wrap">
-							<h3 class="algorithm__item-heading">Простое запоминание</h3>
-							<p class="algorithm__text">Слова запоминаются в результате упрощенных техник и применения в спонтанных ситуациях, а не посредством зубрежки</p>
-						</div>
-						<div class="algorithm__img">
-							<img src="img/lector.jpg" width="290" alt="Простое запоминание">
-						</div>
-					</li>
-					<li class="algorithm__item">
-						<div class="algorithm__text-wrap">
-							<h3 class="algorithm__item-heading">Импровизация и диалоги</h3>
-							<p class="algorithm__text">Форма импровизации позволяет подготовиться к ситуации, когда шаблонные ответы будут неприменимы</p>
-						</div>
-						<div class="algorithm__img">
-							<img src="img/dialog.jpg" width="290" alt="Импровизация и диалоги">
-						</div>
-					</li>
-					<li class="algorithm__item">
-						<div class="algorithm__text-wrap">
-							<h3 class="algorithm__item-heading">Говорим и слушаем</h3>
-							<p class="algorithm__text">Прослушивание себя и профессионалов позволит научиться воспринимать чужую речь на слух</p>
-						</div>
-						<div class="algorithm__img">
-							<img src="img/listen.jpg" width="290" alt="Говорим и слушаем">
-						</div>
-					</li>
-					<li class="algorithm__item">
-						<div class="algorithm__text-wrap">
-							<h3 class="algorithm__item-heading">Повторение</h3>
-							<p class="algorithm__text">Каждое следующее занятие включает в себя закрепление предыдущих тем и создает базу для прохождения следующих</p>
-						</div>
-						<div class="algorithm__img">
-							<img src="img/repeat.jpg" width="290" alt="Повторение">
-						</div>
-					</li>
-				</ul>
-			</div>
-		</section>
+    function requestPass(data) {
+        $.ajax({
+            type: 'POST',
+            url: 'https://live.proofix.tv/ipb02122022/system.php?event=2245',
+            data: data,
+            success: function (response) {
+                response = JSON.parse(response);
+                if (response.status && response.src) {
+                    $('#player iframe').attr('src', response.src);
+                    $('#passwd').fadeOut(function () {
+                        $('#player').fadeIn().css('display', 'inline-block');
+                    });
+                    Cookies.set('ipb02122022-id', data.pass, {sameSite: 'none', secure: true});
+                    socket.emit("uid", data.pass);
 
-		<section class="reviews">
-			<h2 class="reviews__heading heading">Отзывы студентов</h2>
-			<div class="reviews__list swiper-container">
-				<div class="swiper-wrapper">
-					<div class="reviews__item swiper-slide">
-						<div class="reviews__author-photo">
-							<img src="img/photo.jpg" width="158" alt="Александра Иванова">
-						</div>
-						<div class="reviews__text-wrap">
-							<h3 class="reviews__author-name">Александра Иванова</h3>
-							<p class="reviews__text">Курс прошел незаметно и оставил после себя только хорошие воспоминания. Нашу группу на постоянной основе вела Алла, Настя и Женя приходили к нам для нарабатывания практики общения. Неделю назад были с мужем в Лондоне - хоть люди разные и речь у всех разная, но было так легко и спокойно! Мы ни разу не заблудились, в аэропорту меня водила за собой пожилая пара в качестве переводчика. Спасибо вам, это было очень полезно!</p>
-							<a class="reviews__author-link" href="#">Вконтакте</a>
-						</div>
-					</div>
-					<div class="reviews__item swiper-slide">
-						<div class="reviews__author-photo">
-							<img src="img/photo.jpg" width="158" alt="Александра Иванова">
-						</div>
-						<div class="reviews__text-wrap">
-							<h3 class="reviews__author-name">Александра Иванова</h3>
-							<p class="reviews__text">Курс прошел незаметно и оставил после себя только хорошие воспоминания. Нашу группу на постоянной основе вела Алла, Настя и Женя приходили к нам для нарабатывания практики общения. Неделю назад были с мужем в Лондоне - хоть люди разные и речь у всех разная, но было так легко и спокойно! Мы ни разу не заблудились, в аэропорту меня водила за собой пожилая пара в качестве переводчика. Спасибо вам, это было очень полезно!</p>
-							<a class="reviews__author-link" href="#">Вконтакте</a>
-						</div>
-					</div>
-					<div class="reviews__item swiper-slide">
-						<div class="reviews__author-photo">
-							<img src="img/photo.jpg" width="158" alt="Александра Иванова">
-						</div>
-						<div class="reviews__text-wrap">
-							<h3 class="reviews__author-name">Александра Иванова</h3>
-							<p class="reviews__text">Курс прошел незаметно и оставил после себя только хорошие воспоминания. Нашу группу на постоянной основе вела Алла, Настя и Женя приходили к нам для нарабатывания практики общения. Неделю назад были с мужем в Лондоне - хоть люди разные и речь у всех разная, но было так легко и спокойно! Мы ни разу не заблудились, в аэропорту меня водила за собой пожилая пара в качестве переводчика. Спасибо вам, это было очень полезно!</p>
-							<a class="reviews__author-link" href="#">Вконтакте</a>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-pagination"></div>
-			</div>
-		</section>
-
-		<section class="banner banner--bottom">
-			<div class="banner__wrap">
-				<div class="banner__img-wrap">
-					<img class="banner__img" src="img/plan.png" width="290" alt="Лондонский автобус">
-				</div>
-				<div class="banner__text-wrap">
-					<h2 class="banner__heading heading">бесплатное пробное занятие</h2>
-					<p class="banner__offer">Приходите на бесплатное первое занятие по теме “аэропорт” и ощутите пользу сразу!</p>
-					<a class="banner__btn btn open-modal" href="call-back.html">Записаться на пробное занятие</a>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<footer class="page-footer">
-		<div class="page-footer__wrap">
-			<div class="page-footer__left-wrap">
-				<div class="page-footer__left-inner-wrap">
-					<a class="page-footer__logo logo">
-						<img src="img/Logo-YES.svg" alt="Школа Английского языка .YES">
-					</a>
-					<p class="page-footer__descripton">Школа  Английского Языка</p>
-				</div>
-				<p class="page-footer__address">г. Москва ул. Северная, 35</p>
-			</div>
-			<div class="page-footer__right-wrap">
-				<ul class="page-footer__social social">
-					<li>
-						<a class="social__item social__item--vk" href="#">
-							<span class="visually-hidden">Вконтакте</span>
-						</a>
-					</li>
-					<li>
-						<a class="social__item social__item--insta" href="#">
-							<span class="visually-hidden">Инстаграм</span>
-						</a>
-					</li>
-					<li>
-						<a class="social__item social__item--youtube" href="#">
-							<span class="visually-hidden">Ютьюб</span>
-						</a>
-					</li>
-					<li>
-						<a class="social__item social__item--ok" href="#">
-							<span class="visually-hidden">Одноклассники</span>
-						</a>
-					</li>
-				</ul>
-				<div class="page-footer__call-to-action call-to-action">
-					<a class="call-to-action__tel page-footer__tel" href="tel:+7945465467">+7 (945) 46-54-67</a>
-					<div class="call-to-action__link-wrap">
-						<a class="call-to-action__call-back open-modal" href="call-back.html">Заказать звонок</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<a class="top-link" href="#page-header">
-		<img src="img/small-up-arrows-in-a-circle.svg" width="60" height="60" alt="Наверх">
-	</a>
-
-	<section class="modal modal--call-back">
-		<div class="modal__wrap">
-			<h2 class="modal__heading heading">Пробное занятие</h2>
-			<p class="modal__description ">Оставьте свой номер телефона и наш оператор свяжется с вами для согласования даты занятия</p>
-			<form class="modal__form contact-form" action="vendor/mailer/smart.php" method="post">
-				<label class="contact-form__item">
-					<span class="visually-hidden">Введите номер телефона</span>
-					<input class="contact-form__input" type="tel" name="tel" required="">
-				</label>
-				<button class="btn contact-form__btn" type="submit">Записаться на пробное занятие</button>
-			</form>
-			<button class="modal__toggle modal__close" type="button">
-				<span class="visually-hidden">Закрыть окно</span>
-			</button>
-		</div>
-	</section>
-
-<section class="modal modal--success">
-		<div class="modal__wrap">
-			<h2 class="modal__heading heading">Успешно отправлено</h2>
-			<p class="modal__description ">Спасибо за предоставленные данные. Наш менеджер свяжется с Вами в течение пяти минут.</p>
-			<button class="btn modal__btn modal__close" type="button">Закрыть окно</button>
-		</div>
-	</section>
-
-	<script src="js/script.js"></script>
-	<script src="js/tel-mask.js"></script>
-	<script src="vendor/swipe_slider/js/swiper.min.js"></script>
-	<script>
-		var mySwiper = new Swiper ('.swiper-container', {
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-  })
-	</script>
-
+                    if (passPingInterval) {
+                      clearInterval(passPingInterval);
+                    }
+                    
+                    passPingInterval = setInterval(function () {
+                      $.ajax({
+                        type: 'POST',
+                        url: 'https://live.proofix.tv/ipb02122022/system.php?event=2245&ping=1',
+                        data: data,
+                        error: function (response) {
+                            console.log('Ошибка пинг функции', response)
+                        }
+                      })
+                    }, 10000)
+                } else if (response.message) {
+                    $('#error').html(response.message);
+                    console.log(response);
+                } else {
+                    $('#error').html('Ошибка! Обновите страницу и повторите ввод пароля!');
+                    console.log(response);
+                }
+            },
+            error: function (response) {
+                $('#error').html('Ошибка! Обновите страницу и повторите ввод пароля!');
+                console.log(response)
+            },
+        })
+    }
+</script>
 </body>
 </html>
